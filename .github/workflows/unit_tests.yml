@@ -22,7 +22,7 @@ jobs:
 
     - name: Run unit tests and generate report
       run: |
-        python -m unittest discover -s main-p 'test_app.py'   # Modify this command based on your test setup
+        python -m unittest test_app.py   # Modify this command based on your test setup
         # You might use coverage or other test runners to generate reports
 
     - name: Archive test reports
