@@ -16,9 +16,9 @@ jobs:
       with:
         python-version: '3.x'  # Replace 'x' with your Python version
 
-#    - name: Install dependencies
-  #    run: |
-      #  pip install -r requirements.txt  # Replace with your dependencies installation command if needed
+    - name: Install dependencies
+      run: |
+        pip install -U Flask  # Replace with your dependencies installation command if needed
 
     - name: Run unit tests and generate report
       run: |
