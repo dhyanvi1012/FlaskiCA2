@@ -1,0 +1,32 @@
+name: Python Unit Tests
+
+on:
+  push:
+    branches: [ main ]  # Set the branch to trigger the workflow
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2  # Checks out your repository
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'  # Replace 'x' with your Python version
+
+#    - name: Install dependencies
+  #    run: |
+      #  pip install -r requirements.txt  # Replace with your dependencies installation command if needed
+
+    - name: Run unit tests and generate report
+      run: |
+        python -m unittest discover -s main-p 'test_app.py'   # Modify this command based on your test setup
+        # You might use coverage or other test runners to generate reports
+
+    - name: Archive test reports
+      uses: actions/upload-artifact@v2
+      with:
+        name: test-reports
+        path: path/to/your/test/reports  # Replace with the path where your test reports are generated
