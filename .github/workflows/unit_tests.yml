@@ -1,34 +1,35 @@
+# GitHub Actions workflow for running unit tests on the application and storing the test reports as an artifact
 name: Python Unit Tests
 
 on:
   push:
-    branches: [ main ]  # Set the branch to trigger the workflow
+    branches:
+      - main
 
 jobs:
   test:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2  # Checks out your repository
+    - name: Checkout Repository
+      uses: actions/checkout@v2
 
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
-        python-version: '3.x'  # Replace 'x' with your Python version
+        python-version: 3.11
 
     - name: Install dependencies
       run: |
-        pip install -U Flask  # Replace with your dependencies installation command if needed
-        pip install matplotlib
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt  # Adjust this based on your project setup
 
-    - name: Run unit tests and generate report
+    - name: Run tests
       run: |
-        python -m unittest test_app.py   # Modify this command based on your test setup
-        # You might use coverage or other test runners to generate reports
+        python test_app.py
 
     - name: Archive test reports
       uses: actions/upload-artifact@v2
       with:
         name: test-reports
-        path: path/to/artifact/
-        
+        path: test-reports
