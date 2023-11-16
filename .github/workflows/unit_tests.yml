@@ -30,4 +30,4 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: test-reports
-        path: path/to/your/test/reports  # Replace with the path where your test reports are generated
+        path: main  # Replace with the path where your test reports are generated
