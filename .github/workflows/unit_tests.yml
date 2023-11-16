@@ -19,6 +19,7 @@ jobs:
     - name: Install dependencies
       run: |
         pip install -U Flask  # Replace with your dependencies installation command if needed
+        pip install matplotlib
 
     - name: Run unit tests and generate report
       run: |
